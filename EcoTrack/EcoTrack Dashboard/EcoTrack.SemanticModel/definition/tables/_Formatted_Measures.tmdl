@@ -1,0 +1,183 @@
+table _Formatted_Measures
+	lineageTag: 792cc5df-baa6-4256-a726-57479133567b
+
+	measure _fomatted_processed = ```
+			
+			
+			// Calculate the sum of the processed weight
+			VAR processed = 
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "processed"),
+			        [Weight])
+			
+			// Calculate the sum of the collected weight
+			VAR collected =
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "collected"),
+			        [Weight])
+			
+			// Divide the processed weight by the collected weight to get the % Processed weight
+			VAR percent_processed = Divide(processed,collected)
+			
+			RETURN
+			
+			    // Format the Result to have the following format: total weight processed (% processed)
+			    processed
+			```
+		formatString: #,0
+		lineageTag: 64028de5-e79b-47b8-92df-69689e35d5d5
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure _fomatted_recyclable = ```
+			
+			
+			// Calculate the sum of the clean weight
+			VAR Clean = 
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "clean"),
+			        [Weight])
+			
+			// Calculate the sum of the contaminated weight
+			VAR Contamination = 
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "contamination"),
+			        [Weight])
+			
+			// Calculate the sum of the processed weight
+			VAR Processed =
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "processed"),
+			        [Weight])
+			
+			// Divide the sum of both contaminated weight and the clean weight by the processed weight to get the % Recyclable
+			VAR percent_recyclable = Divide(Contamination + Clean,Processed)
+			
+			RETURN
+			
+			    // Format the result to have the following format: Contamination + Clean Weight (% Recyclable)
+			    FORMAT(Contamination + Clean, "#,##0") & " (" & FORMAT(percent_recyclable, "0%") & ")"
+			```
+		lineageTag: 51d5fd8a-1334-427a-9cc1-6a18e5663feb
+
+	measure _formatted_Clean = ```
+			
+			
+			// Calculate the sum of the clean weight
+			VAR clean = 
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "clean"),
+			        [Weight])
+			
+			// Calculate the sum of the processed weight
+			VAR Processed =
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "processed"),
+			        [Weight])
+			
+			// Divide the clean weight by the processed weight to get the % clean
+			VAR percent_clean = Divide(clean,Processed) 
+			
+			RETURN
+			
+			    // Format the result to have the following format: sum of clean weight (% Clean)
+			    FORMAT(clean, "#,##0") & " (" & FORMAT(percent_clean, "0%") & ")"
+			
+			```
+		lineageTag: 91192a57-09a2-445f-8778-96e672b6d0f8
+
+	measure _formatted_collected_units =
+			
+			
+			// Calculating the Sum of the collected weight and multiplying it by the corresponding lbs to pieces conversion unit
+			Sumx(
+			    Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "collected"),
+			    [Weight] * RELATED('1 Dim Sortation Material Type'[Material to Pieces])
+			)
+		formatString: #,0
+		lineageTag: a8c67ac0-3442-493f-b7da-fe9db6d5f800
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure _formatted_sortation_units =
+			
+			
+			// Calculating the processed units as sum of clean (target) units and contaminated (commingled) units
+			Sumx(
+			    Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "contamination"),
+			    [Weight] * RELATED('1 Dim Sortation Material Type'[Material to Pieces])
+			)
+			+
+			Sumx(
+			    Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "clean"),
+			    [Weight] * RELATED('1 Dim Sortation Material Type'[Material to Pieces])
+			)
+		formatString: #,0
+		lineageTag: 1d569a60-032a-4bda-9b99-9cf740950bb5
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure _formatted_Waste = ```
+			
+			
+			// Calculate the sum fo the trash or waste in lbs
+			VAR Waste = 
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "trash"),
+			        [Weight])
+			
+			// Calculate the sum of processed weight
+			VAR Processed =
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "processed"),
+			        [Weight])
+			
+			// divide the total waste by the total processed to get the % waste
+			VAR percent_waste = Divide(Waste,Processed) 
+			
+			RETURN
+			
+			    // Format the result to show the following format: the total weight of waste material (% waste)
+			    FORMAT(Waste, "#,##0") & " (" & FORMAT(percent_waste, "0%") & ")"
+			
+			```
+		lineageTag: b3ba7954-c889-499e-9dab-8ca05e959984
+
+	measure _formatted_Commingled = ```
+			
+			
+			// Calculate the sum of the Commingled weight
+			VAR Commingled = 
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "contamination"),
+			        [Weight])
+			
+			// Calculate the sum of the processed weight
+			VAR Processed =
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "processed"),
+			        [Weight])
+			
+			// Divide the clean weight by the processed weight to get the % clean
+			VAR percent_Commingled = Divide(Commingled,Processed) 
+			
+			RETURN
+			
+			    // Format the result to have the following format: sum of clean weight (% Clean)
+			    FORMAT(Commingled, "#,##0") & " (" & FORMAT(percent_Commingled, "0%") & ")"
+			
+			```
+		lineageTag: 4fe8d001-a6c1-4048-916d-d449cdc1ce04
+
+	partition _Formatted_Measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

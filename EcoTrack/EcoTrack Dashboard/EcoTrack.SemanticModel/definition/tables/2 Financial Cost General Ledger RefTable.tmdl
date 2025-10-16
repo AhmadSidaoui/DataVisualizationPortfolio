@@ -1,0 +1,120 @@
+table '2 Financial Cost General Ledger RefTable'
+	lineageTag: 0cd48b61-f3bd-4549-8b42-8aea1b5fb3a1
+
+	column Entity
+		dataType: string
+		lineageTag: 71b60361-8213-4a1c-94b4-a6cf86ffeddf
+		summarizeBy: none
+		sourceColumn: Entity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 657e7b45-fa1f-46d8-aca5-68231ea487c4
+		summarizeBy: none
+		sourceColumn: Time
+
+		variation Variation
+			isDefault
+			relationship: b0ad7a0f-7a32-476e-9ff1-c5116a266852
+			defaultHierarchy: LocalDateTable_33a4ad5a-31e3-4602-8a4e-08eed954a7e3.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Key Column'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8e1f612e-484c-4889-ac2a-724e32bf2fda
+		summarizeBy: sum
+		sourceColumn: Key Column
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Document Type'
+		dataType: int64
+		formatString: 0
+		lineageTag: be179635-2ac1-441b-b65e-0b167a82404a
+		summarizeBy: sum
+		sourceColumn: Document Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Numer'
+		dataType: string
+		lineageTag: a138997e-d9d2-44e6-8fd4-217c4da53b2d
+		summarizeBy: none
+		sourceColumn: Account Numer
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source Number'
+		dataType: string
+		lineageTag: e8f7bb02-d367-49aa-b77e-e7e4bbfbfc82
+		summarizeBy: none
+		sourceColumn: Source Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source Name'
+		dataType: string
+		lineageTag: c4a4a0b9-5c76-4f17-beae-02363766468a
+		summarizeBy: none
+		sourceColumn: Source Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: double
+		lineageTag: c7636eb0-0ef3-4538-95aa-7b50f13973e7
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: ca05e1fd-6d29-409a-93c8-5d50887be74c
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2f403b18-d156-457b-9b54-fc28125ea0ab
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: f52e946e-b5dd-41b5-9868-ccfa172f0b03
+			defaultHierarchy: LocalDateTable_0079ac71-5709-49cb-af04-af750540fd90.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition '2 Financial Cost General Ledger RefTable' = m
+		mode: import
+		queryGroup: 'Financial Data'
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\Ahmad Sidaoui\Desktop\WeatherfordGit\My website\EcoTrack\D6 Inc randomized data.xlsx"), null, true),
+				    #"Financial - Cost_Sheet" = Source{[Item="Financial - Cost",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Financial - Cost_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Entity", type text}, {"Time", type date}, {"Key Column", Int64.Type}, {"Document Type", Int64.Type}, {"Account Numer", type text}, {"Source Number", type text}, {"Source Name", type text}, {"Amount", type number}, {"Year", Int64.Type}, {"Date", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

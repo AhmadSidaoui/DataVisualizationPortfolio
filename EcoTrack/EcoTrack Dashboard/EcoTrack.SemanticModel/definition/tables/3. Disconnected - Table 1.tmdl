@@ -1,0 +1,23 @@
+table '3. Disconnected - Table 1'
+	lineageTag: deb3cb00-3325-41af-8a73-8ae2bdc85cdb
+
+	column Column1
+		dataType: string
+		lineageTag: 68e591da-1b3b-40d8-bef3-ae75cf36632a
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '3. Disconnected - Table 1' = m
+		mode: import
+		queryGroup: 'Disconnected Tables'
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WykkqVorViVYqzcssAbJiAQ==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

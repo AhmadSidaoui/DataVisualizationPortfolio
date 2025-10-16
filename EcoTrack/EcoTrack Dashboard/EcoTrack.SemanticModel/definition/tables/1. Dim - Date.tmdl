@@ -1,0 +1,105 @@
+table '1. Dim - Date'
+	lineageTag: cc344cf3-af58-49f9-bb2f-5e25cc3d570b
+
+	column Date
+		formatString: dd/mm/yyyy
+		lineageTag: 1bdba0df-bc68-4682-8962-1602312055bd
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 8971854d-cf33-421b-868f-e0062fbae062
+			defaultHierarchy: LocalDateTable_a6d921cb-0254-43fe-af81-ec408149cb72.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Year
+		formatString: 0
+		lineageTag: e4891620-3035-4e07-b8b3-f184dc081679
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		formatString: 0
+		lineageTag: 1ad49d10-8499-41e2-8af6-2d5e88b47c63
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		lineageTag: 8fb89cf9-003f-43c6-952d-134a6deda56b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		formatString: 0
+		lineageTag: 477e2b92-0613-4fea-b2d9-413f44bdfc41
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeek
+		formatString: 0
+		lineageTag: 0832c341-62bd-418a-b10f-fd8a5faa2b64
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [DayOfWeek]
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartOfWeek
+		formatString: General Date
+		lineageTag: bc8ad851-7320-4293-8971-dd0588c5407f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [StartOfWeek]
+
+		variation Variation
+			isDefault
+			relationship: 7a1bd5a5-8f0e-4fdc-a78d-14a4de0b3289
+			defaultHierarchy: LocalDateTable_452e4aa0-0922-4dc7-a956-75f31a954d06.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '1. Dim - Date' = calculated
+		mode: import
+		source = ```
+				
+				ADDCOLUMNS(
+				    CALENDAR(
+				        CALCULATE(
+				            MIN('2 fact Sortation Data Unpivoted'[Time]), 
+				            '2 fact Sortation Data Unpivoted'[Weight Material Type.1] = "collected"
+				        ),
+				
+				        CALCULATE(
+				            MAX('2 fact Sortation Data Unpivoted'[Time]), 
+				            '2 fact Sortation Data Unpivoted'[Weight Material Type.1] = "collected"
+				        )  
+				    ),
+				    "Year", YEAR([Date]),
+				    "Month", MONTH([Date]),
+				    "Month Name", FORMAT([Date], "MMMM"),
+				    "Quarter", QUARTER([Date]),
+				    "DayOfWeek", WEEKDAY([Date]),
+				    "StartOfWeek", [Date] - WEEKDAY([Date], 2) + 1
+				)
+				
+				```
+
+	annotation PBI_Id = a2f8ce993bc34a209410042f2d21d9ea
+

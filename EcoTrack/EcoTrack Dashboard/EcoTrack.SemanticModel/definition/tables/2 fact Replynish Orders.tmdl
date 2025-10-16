@@ -1,0 +1,84 @@
+table '2 fact Replynish Orders'
+	lineageTag: 23ff97ec-429d-4fb3-975a-7ede0789f650
+
+	column Entity
+		dataType: string
+		lineageTag: dfaf7320-89ba-48d5-8443-ace26fde102d
+		summarizeBy: none
+		sourceColumn: Entity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ff21b182-87aa-437d-ab16-5621266041bb
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: e9f8b60e-1998-4f1b-a5d5-6637d46d831d
+			defaultHierarchy: LocalDateTable_22c8c02a-53d4-40e2-8019-b2a4dbf4ada8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'fulfilled on'
+		dataType: string
+		lineageTag: c9bdfcd2-cc43-419f-84ae-14894fa5ad5d
+		summarizeBy: none
+		sourceColumn: fulfilled on
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Attribute.1'
+		dataType: string
+		lineageTag: 0eb5f677-a170-4e18-94a6-626b89828774
+		summarizeBy: none
+		sourceColumn: Attribute.1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Attribute.2'
+		dataType: string
+		lineageTag: 64d91405-908e-4714-88d6-fc4730c590c9
+		summarizeBy: none
+		sourceColumn: Attribute.2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Attribute.3'
+		dataType: string
+		lineageTag: 74c36533-7857-4f9f-bef3-d5d2aed4bb6d
+		summarizeBy: none
+		sourceColumn: Attribute.3
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: int64
+		formatString: 0
+		lineageTag: e7203197-5563-422d-bb4d-ee08e84490e3
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '2 fact Replynish Orders' = m
+		mode: import
+		queryGroup: 'Collected Data- Weekly'
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\Ahmad Sidaoui\Desktop\WeatherfordGit\My website\EcoTrack\D6 Inc randomized data.xlsx"), null, true),
+				    #"Replynish - Orders_Sheet" = Source{[Item="Replynish - Orders",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Replynish - Orders_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Entity", type text}, {"Date", type date}, {"fulfilled on", type any}, {"Attribute.1", type text}, {"Attribute.2", type text}, {"Attribute.3", type any}, {"Value", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,193 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 79.140883532973419,
+        "y": 111142.67907277073
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 2282.0198529270228,
+            "y": 110606.86118254566
+          },
+          "nodeIndex": "_CRU3_Measures",
+          "nodeLineageTag": "1f5b3f7d-de0d-48e3-b446-d2e6b1daa456",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 2525.3465185007453,
+            "y": 110606.24219960597
+          },
+          "nodeIndex": "_Sales_Measures",
+          "size": {
+            "height": 698.606784222744,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 2809.4094194228933,
+            "y": 110607.41404749222
+          },
+          "nodeIndex": "_General_Measures",
+          "size": {
+            "height": 403.70263215424575,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 1689.7068217623673,
+            "y": 111964.14063295962
+          },
+          "nodeIndex": "3. Disconnected - Table 1",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 1686.3833292528975,
+            "y": 111845.93282231672
+          },
+          "nodeIndex": "3. Disconnected - Table 2",
+          "nodeLineageTag": "c22feaf4-9741-4cea-9ea5-7e3281556586",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 2262.5124701659984,
+            "y": 110875.51676664379
+          },
+          "nodeIndex": "_Formatted_Measures",
+          "nodeLineageTag": "792cc5df-baa6-4256-a726-57479133567b",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 895.12893754804418,
+            "y": 111115.65566339249
+          },
+          "nodeIndex": "1. Dim - Date",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 631.87302549549929,
+            "y": 111112.51800912218
+          },
+          "nodeIndex": "1 Dim Static",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 800.94655717038665,
+            "y": 110499.32129901607
+          },
+          "nodeIndex": "2 fact Replynish Orders",
+          "size": {
+            "height": 201.66731423983583,
+            "width": 259.2712339808279
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 310.89694925689474,
+            "y": 111108.78945044398
+          },
+          "nodeIndex": "1 Dim Sortation Material Type",
+          "size": {
+            "height": 284.60288131274683,
+            "width": 282.12621419969287
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 458.57612151683622,
+            "y": 111655.36435157129
+          },
+          "nodeIndex": "2 fact Sortation Data Unpivoted",
+          "size": {
+            "height": 791.09117246890764,
+            "width": 596.31216955123932
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1539.9835378767636,
+            "y": 110685.81796908993
+          },
+          "nodeIndex": "2 Financial Cost General Ledger RefTable",
+          "size": {
+            "height": 489.5530352105543,
+            "width": 518.3295528158319
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1531.7693011073268,
+            "y": 111254.94606823917
+          },
+          "nodeIndex": "2 Financial Sales General Ledger RefTable",
+          "size": {
+            "height": 368.34634016550262,
+            "width": 523.3903740703845
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 469.65033990034817,
+            "y": 110514.57914420711
+          },
+          "nodeIndex": "2 fact Replynish Installation units",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 14
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 62.336089590424194,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

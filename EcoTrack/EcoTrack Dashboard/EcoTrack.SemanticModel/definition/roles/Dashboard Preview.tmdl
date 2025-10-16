@@ -1,0 +1,5 @@
+role 'Dashboard Preview'
+	modelPermission: read
+
+	annotation PBI_Id = cf94a5cb27bd4e3780220f2d781d83e5
+

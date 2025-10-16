@@ -1,0 +1,5 @@
+role 'Power User'
+	modelPermission: read
+
+	annotation PBI_Id = 14f0c2d9b3d042afb07142320c949655
+

@@ -1,0 +1,313 @@
+table _Sales_Measures
+	lineageTag: 4833b40a-b00a-4bd4-9c7d-3a27de84b09b
+
+	measure '1.1 Sales LY (USD)' = ```
+			
+			
+			// Calculate the sum of invoices -> document type 2
+			VAR Invoices =
+			    SUMX(
+			        Filter(
+			            '2 Financial Sales General Ledger RefTable',
+			            '2 Financial Sales General Ledger RefTable'[Year] = [_last year] && '2 Financial Sales General Ledger RefTable'[Document Type] == 2),
+			        [Amount])
+			    
+			// Calculate the sum of credit memo -> document type 3
+			VAR Memos = 
+			    SUMX(
+			        Filter(
+			            '2 Financial Sales General Ledger RefTable',
+			            '2 Financial Sales General Ledger RefTable'[Year] = [_last year] && '2 Financial Sales General Ledger RefTable'[Document Type] == 3),
+			        [Amount])
+			
+			// Calculate the sum of refunds -> document type 6
+			VAR Refunds = 
+			    SUMX(
+			        Filter(
+			            '2 Financial Sales General Ledger RefTable',
+			            '2 Financial Sales General Ledger RefTable'[Year] = [_last year] && '2 Financial Sales General Ledger RefTable'[Document Type] == 6),
+			        [Amount])
+			
+			RETURN
+			    Invoices + Memos + Refunds
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: ac14a363-0172-4a2b-8a10-9cc6757b323a
+
+	measure '1.2 Sales CY (USD)' = ```
+			
+			
+			// Calculate the sum of invoices -> document type 2
+			VAR Invoices =
+			    SUMX(
+			        Filter(
+			            '2 Financial Sales General Ledger RefTable',
+			            '2 Financial Sales General Ledger RefTable'[Year] = [_current year] && '2 Financial Sales General Ledger RefTable'[Document Type] == 2),
+			        [Amount])
+			    
+			// Calculate the sum of credit memo -> document type 3
+			VAR Memos = 
+			    SUMX(
+			        Filter(
+			            '2 Financial Sales General Ledger RefTable',
+			            '2 Financial Sales General Ledger RefTable'[Year] = [_current year] && '2 Financial Sales General Ledger RefTable'[Document Type] == 3),
+			        [Amount])
+			
+			// Calculate the sum of refunds -> document type 6
+			VAR Refunds = 
+			    SUMX(
+			        Filter(
+			            '2 Financial Sales General Ledger RefTable',
+			            '2 Financial Sales General Ledger RefTable'[Year] = [_current year] && '2 Financial Sales General Ledger RefTable'[Document Type] == 6),
+			        [Amount])
+			
+			RETURN
+			    Invoices + Memos + Refunds
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: bcac0594-96f2-4bd1-b2f3-966b3dfbb810
+
+	measure '1.3 YoY Variance (USD)' = ```
+			[1.2 Sales CY (USD)] - [1.1 Sales LY (USD)]
+			
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 0baece46-5345-43c5-9266-090269358782
+
+	measure '1.4 YoY Variance (%)' = ```
+			DIVIDE([1.2 Sales CY (USD)] - [1.1 Sales LY (USD)], [1.1 Sales LY (USD)]) 
+			```
+		formatString: 0\ %;-0\ %;0\ %
+		lineageTag: 7697507b-325a-40f3-a178-59c702698d14
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure '1.5 Average $/Day LY' = ```
+			
+			
+			// Calculate the number of days for the relevant month in the filter context last year
+			VAR Number_of_days_ly =
+			    DAY(
+			        EOMONTH(
+			            DATE([_last year],
+			                Month( MAXX('2 Financial Sales General Ledger RefTable',[Time])),
+			                1)
+			            ,0)
+			        )
+			
+			// Calculate the average $/day for last year
+			VAR output = 
+			    DIVIDE(
+			        [1.1 Sales LY (USD)],
+			        Number_of_days_ly
+			    )
+			
+			RETURN
+			    output
+			
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: f33258b2-d379-4df9-9f87-301569674440
+
+	measure '1.6 Average $/Day CY' = ```
+			
+			DIVIDE(
+			    [1.2 Sales CY (USD)],
+			    DAY(EOMONTH(MAXX('2 Financial Sales General Ledger RefTable', [Time]), 0))
+			    )
+			
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 17d71387-e90a-4f5e-bf7d-1f4e2c6d812b
+
+	measure '2.1 Orders per Month LY' = ```
+			
+			Countx(FILTER(
+			    '2 Financial Sales General Ledger RefTable',
+			    '2 Financial Sales General Ledger RefTable'[Year] = [_last year]
+			    && '2 Financial Sales General Ledger RefTable'[Document Type] ==2
+			), [Month])
+			
+			```
+		formatString: 0
+		lineageTag: c80e84a4-97fd-4f0b-b2ef-e06e821f6f68
+
+	measure '2.2 Orders per Month CY' = ```
+			
+			Countx(FILTER(
+			    '2 Financial Sales General Ledger RefTable',
+			    '2 Financial Sales General Ledger RefTable'[Year] = [_current year]
+			    && '2 Financial Sales General Ledger RefTable'[Document Type] == 2
+			), [Month])
+			
+			```
+		formatString: 0
+		lineageTag: 1df2da83-4111-41a3-9e3f-78101cf05039
+
+	measure '2.4 Average Orders/Day CY' = ```
+			
+			
+			DIVIDE(
+			    [2.2 Orders per Month CY],
+			    DAY(EOMONTH(MAXX('2 Financial Sales General Ledger RefTable', [Time]), 0))
+			    )
+			
+			```
+		formatString: 0.00
+		lineageTag: c4ac81bf-4c64-4021-a808-aeb93cc7ce8a
+
+	measure '2.3 Average Orders/Day LY' = ```
+			
+			DIVIDE(
+			    [2.1 Orders per Month LY],
+			    DAY(
+			        EOMONTH(
+			            DATE([_last year],
+			                Month( MAXX('2 Financial Sales General Ledger RefTable',[Time])),
+			                1)
+			            ,0)
+			        )
+			)
+			
+			
+			```
+		formatString: 0.00
+		lineageTag: 231ea6be-a36c-49f4-bc21-6931084b196c
+
+	measure '2.5 Average $/Order LY' = DIVIDE([1.1 Sales LY (USD)], [2.1 Orders per Month LY])
+		lineageTag: eb874f04-c8fd-4bab-9019-5b86ddf7a7e1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2.6 Average $/Order CY' = DIVIDE([1.2 Sales CY (USD)], [2.2 Orders per Month CY])
+		lineageTag: 37e2fc1c-e90c-4db8-8179-1650a1ad83aa
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3.1 Costs LY (USD)' = ```
+			
+			    SUMX(Filter('2 Financial Cost General Ledger RefTable', '2 Financial Cost General Ledger RefTable'[Year] = [_last year]), [Amount])
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 776ad067-30c1-49e5-bad1-02f4c3166705
+
+	measure '3.2 Costs CY (USD)' = ```
+			
+			    SUMX(Filter('2 Financial Cost General Ledger RefTable', '2 Financial Cost General Ledger RefTable'[Year] = [_current year]), [Amount])
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: c8d9c740-800c-4a09-a708-318bb20dd1d4
+
+	measure '3.3 YoY Variance (USD)' = ```
+			[3.2 Costs CY (USD)] - [3.1 Costs LY (USD)]
+			
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 448ee60e-c6d0-4a85-8ead-094e117eed57
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure '3.4 YoY Variance (%)' = ```
+			DIVIDE([3.2 Costs CY (USD)] - [3.1 Costs LY (USD)], [3.1 Costs LY (USD)]) 
+			```
+		formatString: 0\ %;-0\ %;0\ %
+		lineageTag: 59bfe718-3e9a-47e0-8c17-2513f8fc8fb9
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure '3.5 Average $/Day LY' = ```
+			
+			DIVIDE(
+			    [3.1 Costs LY (USD)],
+			    DAY(
+			        EOMONTH(
+			            DATE([_last year],
+			                Month( MAXX('2 Financial Cost General Ledger RefTable',[Time])),
+			                1)
+			            ,0)
+			        )
+			)
+			
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 2f844927-64b4-4b64-8b40-b475cefae0db
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure '3.6 Average $/Day CY' = ```
+			
+			DIVIDE(
+			    [3.2 Costs CY (USD)],
+			    DAY(EOMONTH(MAXX('2 Financial Cost General Ledger RefTable', [Time]), 0))
+			    )
+			
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: c1c3419e-fee4-476e-9efe-82ee3923190d
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Cost/pound LY (USD) KPI' = ```
+			IF( 
+			    ISFILTERED('1 Dim Sortation Material Type'),
+			        Divide([3.1 Costs LY (USD)] , Sumx(Filter('2 fact Sortation Data Unpivoted', YEAR('2 fact Sortation Data Unpivoted'[Time]) = [_last year]), [Weight])), 
+			        BLANK()
+			)
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 41d55f8e-86eb-4a6d-996f-2b47cd1267cd
+
+	measure '_current year' = calculate(Year(MAX('1. Dim - Date'[Date])), All('1. Dim - Date'))
+		formatString: 0
+		lineageTag: a4f3d552-0454-4e43-a87b-7d23ffe659ec
+
+	measure '_last year' = ```
+			calculate(Year(MAX('1. Dim - Date'[Date])), All('1. Dim - Date')) - 1
+			 
+			```
+		formatString: 0
+		lineageTag: c75670b2-52f5-4a87-8fc1-5a903c251474
+
+	measure 'Cost/pound CY (USD) KPI' = ```
+			IF( 
+			    ISFILTERED('1 Dim Sortation Material Type'),
+			        Divide([3.2 Costs CY (USD)] , Sumx(Filter('2 fact Sortation Data Unpivoted', YEAR('2 fact Sortation Data Unpivoted'[Time]) = [_current year]), [Weight])), 
+			        BLANK()
+			)
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: c47be958-9469-490d-9cca-138f042ebc79
+
+	measure 'Sales/pound CY (USD) KPI' = ```
+			IF( 
+			    ISFILTERED('1 Dim Sortation Material Type'),
+			        Divide([1.2 Sales CY (USD)] , Sumx(Filter('2 fact Sortation Data Unpivoted', YEAR('2 fact Sortation Data Unpivoted'[Time]) = [_current year]), [Weight])), 
+			        BLANK()
+			)
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: eeceebc5-daf1-4408-8a81-a5a98a226be8
+
+	measure 'Sales/pound LY (USD) KPI' = ```
+			IF( 
+			    ISFILTERED('1 Dim Sortation Material Type'),
+			        Divide([1.1 Sales LY (USD)]  , Sumx(Filter('2 fact Sortation Data Unpivoted', YEAR('2 fact Sortation Data Unpivoted'[Time]) = [_last year]), [Weight])), 
+			        BLANK()
+			)
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 75c50dd8-ff26-45ac-9c0b-4964b54ad873
+
+	partition _Sales_Measures = m
+		mode: import
+		queryGroup: Measures
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

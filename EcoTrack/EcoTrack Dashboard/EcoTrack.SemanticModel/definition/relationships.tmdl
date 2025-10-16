@@ -1,0 +1,63 @@
+relationship 8971854d-cf33-421b-868f-e0062fbae062
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '1. Dim - Date'.Date
+	toColumn: LocalDateTable_a6d921cb-0254-43fe-af81-ec408149cb72.Date
+
+relationship 7a1bd5a5-8f0e-4fdc-a78d-14a4de0b3289
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '1. Dim - Date'.StartOfWeek
+	toColumn: LocalDateTable_452e4aa0-0922-4dc7-a956-75f31a954d06.Date
+
+relationship AutoDetected_27ec11d9-0395-4389-827c-5749e85badb9
+	fromColumn: '2 fact Sortation Data Unpivoted'.Entity
+	toColumn: '1 Dim Static'.Entity
+
+relationship AutoDetected_a144b181-8960-46d4-bb05-fc03e993344c
+	fromColumn: '2 fact Replynish Orders'.Entity
+	toColumn: '1 Dim Static'.Entity
+
+relationship AutoDetected_16427144-ce2c-4186-b845-de0ba056f7c9
+	fromColumn: '2 fact Replynish Installation units'.Entity
+	toColumn: '1 Dim Static'.Entity
+
+relationship c73ed041-b7c9-9775-3c2c-cb9d7ad4b31c
+	fromColumn: '2 fact Replynish Installation units'.Time
+	toColumn: '1. Dim - Date'.Date
+
+relationship e9f8b60e-1998-4f1b-a5d5-6637d46d831d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '2 fact Replynish Orders'.Date
+	toColumn: LocalDateTable_22c8c02a-53d4-40e2-8019-b2a4dbf4ada8.Date
+
+relationship 8bba0e14-6b11-348e-49a6-39342b3c17ea
+	fromColumn: '2 fact Sortation Data Unpivoted'.Time
+	toColumn: '1. Dim - Date'.Date
+
+relationship 251bb883-5b91-8f30-670a-815e685ca914
+	fromColumn: '2 fact Replynish Orders'.'Attribute.2'
+	toColumn: '1 Dim Sortation Material Type'.'Weight Material Type (Replynish)'
+
+relationship e38530e4-1190-2e36-56e8-f8f29088abf3
+	fromColumn: '2 fact Sortation Data Unpivoted'.'Weight Material Type.2'
+	toColumn: '1 Dim Sortation Material Type'.'Weight Material Type (Replynish)'
+
+relationship b0ad7a0f-7a32-476e-9ff1-c5116a266852
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '2 Financial Cost General Ledger RefTable'.Time
+	toColumn: LocalDateTable_33a4ad5a-31e3-4602-8a4e-08eed954a7e3.Date
+
+relationship f52e946e-b5dd-41b5-9868-ccfa172f0b03
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '2 Financial Cost General Ledger RefTable'.Date
+	toColumn: LocalDateTable_0079ac71-5709-49cb-af04-af750540fd90.Date
+
+relationship bb826dd8-d560-44ab-81f4-4070ba955090
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '2 Financial Sales General Ledger RefTable'.Time
+	toColumn: LocalDateTable_f77ee18e-1954-4a51-9781-47eadcfdc999.Date
+
+relationship aa8b79aa-c46d-4283-be8d-74f0ce632f61
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '2 Financial Sales General Ledger RefTable'.Date
+	toColumn: LocalDateTable_90460052-3259-4950-8534-e1d6bf0f7cbe.Date
+

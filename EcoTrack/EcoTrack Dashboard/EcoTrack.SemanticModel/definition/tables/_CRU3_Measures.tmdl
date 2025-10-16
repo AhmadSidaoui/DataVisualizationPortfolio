@@ -1,0 +1,534 @@
+table _CRU3_Measures
+	lineageTag: 1f5b3f7d-de0d-48e3-b446-d2e6b1daa456
+
+	measure '% Recyclable' = ```
+			
+			
+			// Check if "units" is selected in disconnected table
+			VAR IsSelected1 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1]) == "units"
+			
+			// Check if "lbs" is selected in the disconnected table
+			VAR IsSelected2 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1])  == "lbs"
+			
+			// Calculate the sum of contamination weight
+			VAR Contamination = 
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "contamination"),
+			        [Weight])
+			
+			// Calculate the sum of clean weight
+			VAR Clean = 
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "clean"),
+			        [Weight])
+			
+			// Calculate the sum of processed weight
+			VAR Processed =
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "processed"),
+			        [Weight])
+			
+			// calculate the % recyclable by dividing the sum of both contaminated and clean weight by the processed weight
+			VAR percent_recyclable = Divide(Contamination + Clean,Processed)
+			
+			// Calculate the output using a switch statement
+			VAR Output =
+			    Switch(TRUE(),
+			        IsSelected1,
+			            BLANK(),
+			        IsSelected2,
+			            percent_recyclable,
+			        Blank())
+			
+			RETURN
+			    Output
+			```
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: aa6ff383-570e-4799-9003-97575621dcae
+
+	measure '% Waste' = ```
+			
+			
+			// Check if "units" is selected in disconnected table
+			VAR IsSelected1 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1]) == "units"
+			
+			// Check if "lbs" is selected in the disconnected table
+			VAR IsSelected2 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1])  == "lbs"
+			// Calculate the sum of trash material weight
+			VAR Waste = 
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "trash"),
+			        [Weight])
+			
+			// Calculate the sum of processed material weight
+			VAR Processed =
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "processed"),
+			        [Weight])
+			
+			// calculate the & waste by dividing the trash weight by the processed weight
+			VAR percent_waste = Divide(Waste,Processed) 
+			
+			// Calculate the output using a switch statement
+			VAR Output =
+			    Switch(TRUE(),
+			        IsSelected1,
+			            BLANK(),
+			        IsSelected2,
+			            percent_waste,
+			        Blank())
+			
+			RETURN
+			    Output
+			
+			```
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 1d7b81a5-5171-42b5-88d9-6f1dcadbd0cd
+
+	measure '% Purity' = ```
+			
+			
+			// Check if "units" is selected in disconnected table
+			VAR IsSelected1 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1]) == "units"
+			
+			// Check if "lbs" is selected in the disconnected table
+			VAR IsSelected2 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1])  == "lbs"
+			
+			// Calculate the sum of clean material weight
+			VAR Clean = 
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "clean"),
+			        [Weight])
+			
+			// Calculate the sum of processed material weight
+			VAR Processed =
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "processed"),
+			        [Weight])
+			
+			// Divide the clean material by the processed material to get the % clean
+			VAR percent_Clean = DIVIDE(clean,Processed)
+			
+			// Calculate the output using a switch statement
+			VAR Output =
+			    Switch(TRUE(),
+			        IsSelected1,
+			            BLANK(),
+			        IsSelected2,
+			            percent_Clean,
+			        Blank())
+			
+			RETURN
+			    Output
+			```
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 8a202a7b-8dc2-4876-a651-34372f5fb4be
+
+	measure 'Clean Weight' = ```
+			
+			
+			// Check if "units" is selected in the disconnected table
+			VAR IsSelected1 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1]) == "units"
+			
+			// Check if "lbs" is selected in the dicsonnected table
+			VAR IsSelected2 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1])  == "lbs"
+			
+			// Calculate the sum of the clean weight in lbs
+			VAR Clean_lbs = 
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "clean"),
+			        [Weight])
+			
+			// Calculate the sum of clean weight in units
+			VAR Clean_units =
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "clean"),
+			        [Weight] * RELATED('1 Dim Sortation Material Type'[Material to Pieces])
+			    )
+			
+			// Calculate the output using a switch statement
+			VAR Output =
+			    Switch(TRUE(),
+			        IsSelected1,
+			            Clean_units,
+			        IsSelected2,
+			            Clean_lbs,
+			        Blank())
+			RETURN
+			
+			Output
+			```
+		formatString: #,0
+		lineageTag: dbc8dc03-9d61-42a9-95bb-3c54165178c3
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Contamination Weight' = ```
+			
+			
+			// Check if "units" is selected in the disconnected table
+			VAR IsSelected1 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1]) == "units"
+			
+			// Check if "lbs" is selected in the disconnected table
+			VAR IsSelected2 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1])  == "lbs" 
+			
+			// Calculate the sum of the contaminated weight in lbs
+			VAR Contamination_lbs = 
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "contamination"),
+			        [Weight])
+			
+			// Calculate the sum of the contaminated weight in units
+			VAR Contamination_units = 
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "contamination"),
+			        [Weight] * RELATED('1 Dim Sortation Material Type'[Material to Pieces]))
+			
+			// Calculate the output using a swtich statement
+			VAR Output = 
+			    Switch(TRUE(),
+			        IsSelected1,
+			            Contamination_units,
+			        IsSelected2,
+			            Contamination_lbs,
+			        Blank())
+			
+			RETURN
+			    Output
+			```
+		formatString: #,0
+		lineageTag: 14f18c7c-44c2-46f5-a738-fc46756ceb6e
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Waste Weight' = ```
+			
+			
+			// Check of "units" is selected in the disconnected table
+			VAR IsSelected1 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1]) == "units"
+			
+			// Check if "lbs" is selected in the disconnected table
+			VAR IsSelected2 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1])  == "lbs"
+			
+			// Calculate the sum of the trash weight in lbs
+			VAR Waste_lbs = 
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "trash"),
+			        [Weight])
+			
+			// Calculate the sum of the trash weight in units
+			VAR Waste_units = 
+			    BLANK()
+			
+			// Calculate the output using a switch statement
+			VAR Output =
+			    Switch(TRUE(),
+			        IsSelected1,
+			            Waste_units,
+			        IsSelected2,
+			            Waste_lbs,
+			        Blank())
+			
+			RETURN
+			    Output
+			
+			```
+		formatString: #,0
+		lineageTag: c809f66c-d784-4d49-8217-279302ea2f30
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Collected Weight' = ```
+			
+			
+			// Check if "units" is selected in disconnected table
+			VAR IsSelected1 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1]) == "units"
+			
+			// Check if "lbs" is selected in the disconnected table
+			VAR IsSelected2 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1])  == "lbs"
+			
+			// Calculate the sum fo the collected weight in lbs
+			VAR Collected_lbs = 
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "collected"),
+			        [Weight])
+			
+			// Calculate the sum of the collected weight in units
+			VAR Collected_units = 
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "collected"),
+			        [Weight] * RELATED('1 Dim Sortation Material Type'[Material to Pieces]))
+			
+			// Calculate the output using a switch statement
+			VAR Output =
+			    Switch(TRUE(),
+			        IsSelected1,
+			            collected_units,
+			        IsSelected2,
+			            Collected_lbs,
+			        Blank())
+			
+			RETURN
+			    Output
+			
+			```
+		formatString: #,0
+		lineageTag: ea1ba2f1-0ef6-4f1c-91be-12a364a75692
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Total Weight' = ```
+			
+			
+			// Check if "units" is selected in the disconnected table
+			VAR IsSelected1 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1]) == "units"
+			
+			// Check if "lbs" is selected in the disconnected table
+			VAR IsSelected2 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1])  == "lbs"
+			
+			// Calculate the sum of the weight in units
+			VAR total_units = 
+			            SUMX(
+			                '2 fact Sortation Data Unpivoted', 
+			                [Weight] * RELATED('1 Dim Sortation Material Type'[Material to Pieces])
+			            )
+			
+			// Calculate the sum of the weight in lbs
+			VAR total_lbs =
+			            SUMX(
+			                '2 fact Sortation Data Unpivoted', 
+			                [Weight]
+			            )
+			
+			VAR Output =
+			    Switch(
+			        True(),
+			        IsSelected1,
+			            total_units,
+			        IsSelected2,
+			            total_lbs,
+			        Blank()
+			    )
+			    
+			RETURN
+			    Output
+			```
+		formatString: #,0
+		lineageTag: 3c7c48c5-8a1c-4703-86ba-d3c0e5c8a10f
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Total - Avg Weight' = ```
+			
+			
+			// Check if "units" is selected in the disconnected tables
+			VAR IsSelected1 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1]) == "units"
+			
+			// Check if "lbs" is selected in the disconnected table
+			VAR IsSelected2 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1]) =="lbs"
+			
+			// Check if "Avg" is selected in the disconnected table
+			VAR IsSelected3 = SELECTEDVALUE('3. Disconnected - Table 2'[Column1]) == "Avg"
+			
+			// Check if "Total" is selected in the disconnected table
+			VAR IsSelected4 = SELECTEDVALUE('3. Disconnected - Table 2'[Column1]) == "Total"
+			
+			// Calculate the sum of the weight in units
+			VAR total_units = 
+			    SUMX(
+			            '2 fact Sortation Data Unpivoted', 
+			            [Weight] * RELATED('1 Dim Sortation Material Type'[Material to Pieces])
+			        )
+			
+			// Calculate the sum of orders
+			VAR sum_orders =
+			    SUMX(
+			        '2 fact Replynish Orders',
+			        [Value])
+			
+			// Calculate the sum of the weight in lbs
+			VAR total_lbs = 
+			    SUMX(
+			            '2 fact Sortation Data Unpivoted', 
+			            [Weight]
+			        )
+			
+			// Calculate the average of the weight in units
+			VAR average_units =
+			    Divide(
+			        SUMX(
+			            '2 fact Sortation Data Unpivoted', 
+			            [Weight] * Related('1 Dim Sortation Material Type'[Material to Pieces])
+			            ),
+			        sum_orders
+			    )
+			
+			// Calculate the average of the weight in lbs
+			VAR average_lbs = 
+			    Divide(
+			        SUMX(
+			            '2 fact Sortation Data Unpivoted', 
+			            [Weight]),
+			        sum_orders
+			    )
+			        
+			
+			// Calcualte the output using a switch statement
+			VAR Output = 
+			    Switch(
+			        True(),
+			        IsSelected1 && IsSelected4,
+			            total_units,
+			        IsSelected2 && IsSelected4,
+			            total_lbs,
+			        IsSelected1 && IsSelected3,
+			            average_units,
+			        IsSelected2 && IsSelected3,
+			            average_lbs,
+			        Blank()
+			    )
+			
+			RETURN
+			    Output
+			```
+		formatString: #,0
+		lineageTag: 0cfac855-2285-4bf2-82ba-bc5e21887c1a
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Avg Weight' = ```
+			
+			
+			// Check if "units" is selected in the disconnected table
+			VAR IsSelected1 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1]) == "units"
+			
+			// Check if "lbs" is selected in the diconnected table
+			VAR IsSelected2 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1])  == "lbs"
+			
+			//Caculate the sum of orders
+			VAR sum_orders =
+			    SUMX(Filter('2 fact Replynish Orders','2 fact Replynish Orders'[Attribute.2] = "CRU3 - Orders"),  [Value])
+			
+			
+			// Calculate the average weight in units
+			VAR Average_in_units = 
+			    Divide(
+			        SUMX(
+			            '2 fact Sortation Data Unpivoted', 
+			            [Weight] * RELATED('1 Dim Sortation Material Type'[Material to Pieces])),
+			        sum_orders
+			    )
+			
+			// Calculate the average weight in lbs
+			VAR Average_in_lbs =
+			    Divide(
+			        SUMX(
+			            '2 fact Sortation Data Unpivoted', 
+			            [Weight]),
+			        sum_orders
+			    )
+			
+			
+			// Calculate the output by using a switch statement
+			VAR Output = 
+			    Switch(
+			        True(),
+			        IsSelected1,
+			            Average_in_units,
+			        IsSelected2,
+			            Average_in_lbs,
+			        Blank()
+			    )
+			RETURN
+			    Output
+			
+			```
+		lineageTag: 1584bebb-a5df-450a-994f-9f0e7b410efa
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Orders_by_Stream =
+			
+			
+			// Calculate the sum of orders
+			SUMX('2 fact Replynish Orders', [Value])
+		formatString: #,0
+		lineageTag: 2e171590-4aae-4f72-b4b3-06fa0b93f42a
+
+	measure 'Processed Weight' = ```
+			
+			
+			// Check if "units" is selected in disconnected table
+			VAR IsSelected1 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1]) == "units"
+			
+			// Check if "lbs" is selected in the disconnected table
+			VAR IsSelected2 = SELECTEDVALUE('3. Disconnected - Table 1'[Column1])  == "lbs"
+			
+			// Calculate the sum fo the Processed weight in lbs
+			VAR Processed_lbs = 
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "processed"),
+			        [Weight])
+			
+			// Calculating the processed units as sum of clean (target) units and contaminated (commingled) units
+			VAR Processed_units = 
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "contamination"),
+			        [Weight] * RELATED('1 Dim Sortation Material Type'[Material to Pieces])
+			    )
+			    +
+			    Sumx(
+			        Filter('2 fact Sortation Data Unpivoted','2 fact Sortation Data Unpivoted'[Weight Material Type.1] == "clean"),
+			        [Weight] * RELATED('1 Dim Sortation Material Type'[Material to Pieces])
+			    )
+			
+			// Calculate the output using a switch statement
+			VAR Output =
+			    Switch(TRUE(),
+			        IsSelected1,
+			            Processed_units,
+			        IsSelected2,
+			            Processed_lbs,
+			        Blank())
+			
+			RETURN
+			    Output
+			
+			```
+		formatString: #,0
+		lineageTag: c7af3550-9253-4a7e-8e43-2b0ac0618345
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Unprocessed Weight' = ```
+			
+			    
+			    // Calculate the un-processed weight
+			    [Collected Weight] - [Processed Weight]
+			
+			```
+		formatString: #,0
+		lineageTag: bf8d6c54-f5d3-4a26-9f13-c5308ec5f06d
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure Orders_Total =
+			
+			
+			// Calculate the sum of orders
+			SUMX(Filter('2 fact Replynish Orders','2 fact Replynish Orders'[Attribute.2] = "CRU3 - Orders"),  [Value])
+		formatString: #,0
+		lineageTag: 15eee416-0ca2-40d8-bb05-9d9b1257297f
+
+	partition _CRU3_Measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "EcoTrack"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c50aa808-fa32-408f-92ba-e494db7ac7d3"
+  }
+}

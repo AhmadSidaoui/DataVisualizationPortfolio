@@ -1,0 +1,139 @@
+table '1 Dim Static'
+	lineageTag: ce4e7cb8-44e6-47ce-b593-83a67262c29d
+
+	column Entity
+		dataType: string
+		lineageTag: 9ee159f7-b912-4a1f-a1fa-4275695c5ed8
+		summarizeBy: none
+		sourceColumn: Entity
+
+		annotation SummarizationSetBy = Automatic
+
+	column lat
+		dataType: double
+		lineageTag: e196f1cb-3d1c-4ee5-a031-2588e216c8e5
+		summarizeBy: sum
+		sourceColumn: lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lon
+		dataType: double
+		lineageTag: 033aa997-dbd3-4f5a-8cf0-d079a9d3f52d
+		summarizeBy: sum
+		sourceColumn: lon
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column state
+		dataType: string
+		lineageTag: 10d9a7a8-00ea-4b22-81b2-3a749b1e2a91
+		summarizeBy: none
+		sourceColumn: state
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'location address'
+		dataType: string
+		lineageTag: a19450cf-b3e4-4282-b82c-7be27b7eca4b
+		summarizeBy: none
+		sourceColumn: location address
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'fulfillment party'
+		dataType: string
+		lineageTag: 267df042-9043-4448-88dd-547b7da7fe01
+		summarizeBy: none
+		sourceColumn: fulfillment party
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'account name'
+		dataType: string
+		lineageTag: 1245f51f-221c-4959-915e-de9bd3c188a0
+		summarizeBy: none
+		sourceColumn: account name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Alias
+		dataType: string
+		lineageTag: a489f866-9a27-4051-b10e-9c454edac360
+		summarizeBy: none
+		sourceColumn: Alias
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 05721de0-1d57-4651-8260-28d8dfb0865d
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weeks in Service'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5a04e52d-5322-40d8-a9a3-9a1639b83365
+		summarizeBy: sum
+		sourceColumn: Weeks in Service
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pick-up Frequency'
+		dataType: double
+		lineageTag: c7c6f04d-2cfa-473b-9b01-bc7965d3cb95
+		summarizeBy: sum
+		sourceColumn: Pick-up Frequency
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Population
+		dataType: int64
+		formatString: 0
+		lineageTag: a83b5927-0dee-4c20-b07c-149aceefb9bd
+		summarizeBy: sum
+		sourceColumn: Population
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 09272faa-7129-42f0-aee2-c5eaf8f72005
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Region Name'
+		dataType: string
+		lineageTag: ae6c7882-755d-4a76-bf60-508782ba3557
+		summarizeBy: none
+		sourceColumn: Region Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '1 Dim Static' = m
+		mode: import
+		queryGroup: 'Dim Tables'
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\Ahmad Sidaoui\Desktop\WeatherfordGit\My website\EcoTrack\D6 Inc randomized data.xlsx"), null, true),
+				    #"Dim - Static_Sheet" = Source{[Item="Dim - Static",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Dim - Static_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Entity", type text}, {"lat", type number}, {"lon", type number}, {"state", type text}, {"location address", type text}, {"fulfillment party", type text}, {"account name", type text}, {"Alias", type text}, {"Region", type text}, {"Weeks in Service", Int64.Type}, {"Pick-up Frequency", type number}, {"Population", Int64.Type}, {"city", type text}, {"Region Name", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

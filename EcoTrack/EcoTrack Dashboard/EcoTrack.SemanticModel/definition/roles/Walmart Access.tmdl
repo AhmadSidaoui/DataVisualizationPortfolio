@@ -1,0 +1,5 @@
+role 'Walmart Access'
+	modelPermission: read
+
+	annotation PBI_Id = 56ab048d4d3047549bbb9612d21cdf63
+

@@ -1,0 +1,47 @@
+table '2 fact Replynish Installation units'
+	lineageTag: 4c3ee1ad-a953-4c7a-b2d2-0caa2fbd9055
+
+	column Entity
+		dataType: string
+		lineageTag: 0e9cdd77-7fcd-47a2-87f8-61e0fd08fe4f
+		summarizeBy: none
+		sourceColumn: Entity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f1a519f6-ad8c-4888-8d55-1dc5f3b77315
+		summarizeBy: none
+		sourceColumn: Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'installed units'
+		dataType: int64
+		formatString: 0
+		lineageTag: d102ba1d-1d3b-4b08-980a-df1553a53cb6
+		summarizeBy: sum
+		sourceColumn: installed units
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '2 fact Replynish Installation units' = m
+		mode: import
+		queryGroup: 'Collected Data- Weekly'
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\Ahmad Sidaoui\Desktop\WeatherfordGit\My website\EcoTrack\D6 Inc randomized data.xlsx"), null, true),
+				    #"units installed_Sheet" = Source{[Item="units installed",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"units installed_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Entity", type text}, {"Time", type date}, {"installed units", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

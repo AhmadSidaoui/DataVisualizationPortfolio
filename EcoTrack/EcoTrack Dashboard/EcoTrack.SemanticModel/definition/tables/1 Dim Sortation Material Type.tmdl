@@ -1,0 +1,69 @@
+table '1 Dim Sortation Material Type'
+	lineageTag: 0450788e-5459-4f60-90cf-b8f81e255adc
+
+	column 'Weight Material Type (Replynish)'
+		dataType: string
+		lineageTag: 2ff7efeb-35bc-4e67-85eb-f96d00cf016b
+		summarizeBy: none
+		sourceColumn: Weight Material Type (Replynish)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weight Type'
+		dataType: string
+		lineageTag: 608f7216-3792-4314-8684-1e96e6e6b8a3
+		summarizeBy: none
+		sourceColumn: Weight Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Material Type (Replynish)'
+		dataType: string
+		lineageTag: 26b008d6-6ed3-4397-8ebc-9ba47f581e14
+		summarizeBy: none
+		sourceColumn: Material Type (Replynish)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Material Type (Sortation)'
+		dataType: string
+		lineageTag: 820cb9ea-9723-41b2-b548-6b976cec71f5
+		summarizeBy: none
+		sourceColumn: Material Type (Sortation)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weight Material Type (Sortation)'
+		dataType: string
+		lineageTag: 7d6f30bf-1fb6-4505-a195-fab3095b1e3a
+		summarizeBy: none
+		sourceColumn: Weight Material Type (Sortation)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Material to Pieces'
+		dataType: double
+		formatString: #,0
+		lineageTag: edd8e2c6-1db6-4296-87df-e0b076dd5980
+		summarizeBy: sum
+		sourceColumn: Material to Pieces
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	partition '1 Dim Sortation Material Type' = m
+		mode: import
+		queryGroup: 'Dim Tables'
+		source =
+				let
+				    #"Source" = Datagration.Navigator("North America"),
+				    #"D6 Inc" = Source{[Name="D6 Inc"]}[Data],
+				    RefTable = #"D6 Inc"{[SourceType="RefTable"]}[Data],
+				    #"CRU3 Dashboard Visualisation - Sortation Material Type Conversion" = RefTable{[Name="CRU3 Dashboard Visualisation - Sortation Material Type Conversion"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(#"CRU3 Dashboard Visualisation - Sortation Material Type Conversion",{"Entity", "Time"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

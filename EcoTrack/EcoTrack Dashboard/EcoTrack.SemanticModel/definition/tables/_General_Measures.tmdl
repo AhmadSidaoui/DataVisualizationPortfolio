@@ -1,0 +1,64 @@
+table _General_Measures
+	lineageTag: f9ea0e72-d524-4e3f-a082-d22288c47884
+
+	measure Version = ```
+			"Version 0.3" 
+			```
+		lineageTag: b437a07a-46ff-49b4-a6e0-80e1da6c1015
+
+	measure Transparent_Color = ```
+			"#00000000" 
+			```
+		lineageTag: eb0387f0-4b86-4396-812c-dd135dc70345
+
+	measure Title_Collection_by_stream =
+			
+			
+			// Print the slected value from the disconnected talbe in a specific format
+			"Collected Weight in [" & SELECTEDVALUE('3. Disconnected - Table 1'[Column1]) & "]" &" by material stream"
+		lineageTag: 0ed85063-452e-40c4-aef9-8d6917fd8218
+
+	measure Title_Sortation =
+			
+			
+			// Print the slected value from the disconnected talbe in a specific format
+			"Sorted Weight in [" & SELECTEDVALUE('3. Disconnected - Table 1'[Column1]) & "]"
+		lineageTag: 5ca5bf50-cfb9-4375-bd53-2569493114af
+
+	measure Title_Collection =
+			
+			
+			// Print the slected value from the disconnected talbe in a specific format
+			"Collected Weight in [" & SELECTEDVALUE('3. Disconnected - Table 1'[Column1]) & "]"
+		lineageTag: ce74af81-ec49-434d-aad0-96818f44f170
+
+	measure Title_Collection_by_location =
+			
+			
+			// Print the slected value from the disconnected talbe in a specific format
+			"Collected Weight in [" & SELECTEDVALUE('3. Disconnected - Table 1'[Column1]) & "]" & UNICHAR(10) & "by location"
+		lineageTag: 975fdc94-db80-405f-8744-95c0fb879dcf
+
+	measure Title_Sortation_by_material_stream =
+			
+			
+			// Print the slected value from the disconnected talbe in a specific format
+			"Sorted Weight in [" & SELECTEDVALUE('3. Disconnected - Table 1'[Column1]) & "]" & UNICHAR(10) & " by material stream"
+		lineageTag: a20f6c36-de1a-4fa2-8c71-d678dd5293a1
+
+	measure 'Info icon' = UNICHAR(128712)
+		lineageTag: b3c0fb39-472a-4928-a93a-f6a0f49531e4
+
+	partition _General_Measures = m
+		mode: import
+		queryGroup: Measures
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

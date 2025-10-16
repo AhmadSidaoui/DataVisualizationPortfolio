@@ -1,0 +1,71 @@
+table '2 fact Sortation Data Unpivoted'
+	lineageTag: c4e3914b-e1ad-4d8b-9d41-4d8245c791b8
+
+	column Entity
+		dataType: string
+		lineageTag: b37ed5e5-8b33-48ec-8638-32e4b0be057e
+		summarizeBy: none
+		sourceColumn: Entity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 54cb2fb5-ff70-4676-8a61-e60c43ed80c4
+		summarizeBy: none
+		sourceColumn: Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Weight
+		dataType: int64
+		formatString: 0
+		lineageTag: 8cbcb8f8-7672-4c3b-b221-9fb6260f2d90
+		summarizeBy: sum
+		sourceColumn: Weight
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weight Material Type.1'
+		dataType: string
+		lineageTag: 7d259a48-13f0-4330-8025-cfb686f9db2e
+		summarizeBy: none
+		sourceColumn: Weight Material Type.1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weight Material Type.2'
+		dataType: string
+		lineageTag: d316ddfe-9b4a-4050-8817-fb1a4ef4eed0
+		summarizeBy: none
+		sourceColumn: Weight Material Type.2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weight Material Type.3'
+		dataType: string
+		lineageTag: eba7e9de-0b79-4a43-9654-9ae692df32c3
+		summarizeBy: none
+		sourceColumn: Weight Material Type.3
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '2 fact Sortation Data Unpivoted' = m
+		mode: import
+		queryGroup: 'Sortation Data - Monthly'
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\Ahmad Sidaoui\Desktop\WeatherfordGit\My website\EcoTrack\D6 Inc randomized data.xlsx"), null, true),
+				    #"fact - Sortation Data_Sheet" = Source{[Item="fact - Sortation Data",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"fact - Sortation Data_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Entity", type text}, {"Time", type date}, {"Weight", Int64.Type}, {"Weight Material Type.1", type text}, {"Weight Material Type.2", type text}, {"Weight Material Type.3", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
