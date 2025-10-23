@@ -1,0 +1,51 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
+  "name": "7f04e083150083e5909e",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "height": 719.40500021917967,
+    "width": 629.6290018557213
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "1 Dim Sortation Material Type"
+                    }
+                  },
+                  "Property": "Material Type (Sortation)"
+                }
+              },
+              "queryRef": "1. Dim - Sortation Material Type.Material Type (Sortation)",
+              "nativeQueryRef": "Material Type (Sortation)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "2 fact Sortation Data Unpivoted"
+                    }
+                  },
+                  "Property": "Weight Material Type.3"
+                }
+              },
+              "queryRef": "2. fact - Sortation Data - Unpivoted.Weight Material Type.3",
+              "nativeQueryRef": "Weight Material Type.3"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
+  "name": "a8338695d7409460d8c7",
+  "position": {
+    "x": 1444.0536977106556,
+    "y": 586.66666666666674,
+    "z": 10000,
+    "height": 456.66666666666669,
+    "width": 475.94630228934415,
+    "tabOrder": 8000
+  },
+  "visualGroup": {
+    "displayName": "Card - Home Cleaning/Beauty Bottles",
+    "groupMode": "ScaleMode"
+  }
+}

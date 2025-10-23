@@ -58,12 +58,13 @@ table '2 fact Sortation Data Unpivoted'
 		queryGroup: 'Sortation Data - Monthly'
 		source =
 				let
-				    Source = Excel.Workbook(File.Contents("C:\Users\Ahmad Sidaoui\Desktop\WeatherfordGit\My website\EcoTrack\D6 Inc randomized data.xlsx"), null, true),
+				    Source = Excel.Workbook(File.Contents("C:\Users\Ahmad Sidaoui\Desktop\DataVisualizationPortfolio\EcoTrack\D6 Inc randomized data.xlsx"), null, true),
 				    #"fact - Sortation Data_Sheet" = Source{[Item="fact - Sortation Data",Kind="Sheet"]}[Data],
 				    #"Promoted Headers" = Table.PromoteHeaders(#"fact - Sortation Data_Sheet", [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Entity", type text}, {"Time", type date}, {"Weight", Int64.Type}, {"Weight Material Type.1", type text}, {"Weight Material Type.2", type text}, {"Weight Material Type.3", type text}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Entity", type text}, {"Time", type date}, {"Weight", Int64.Type}, {"Weight Material Type.1", type text}, {"Weight Material Type.2", type text}, {"Weight Material Type.3", type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each [Time] >= #date(2024, 10, 1) and [Time] <= #date(2024, 10, 31))
 				in
-				    #"Changed Type"
+				    #"Filtered Rows"
 
 	annotation PBI_NavigationStepName = Navigation
 

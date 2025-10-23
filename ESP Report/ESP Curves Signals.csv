@@ -1,0 +1,9 @@
+Description,Signal
+"Best Efficiency Rate","BestEfficiencyInsituFlowRate_operatingRange"
+"Efficiency","Efficiency_pumpCurve"
+"Well","Head_WellCurve"
+"Head","Head_pumpCurve"
+"Power","HorsePower_pumpCurve"
+"Max Rate","MaximumInsituFlowRate_operatingRange"
+"Min Rate","MinimumInsituFlowRate_operatingRange"
+"Operating Point","TotalDynamicHead (ft)"

@@ -34,12 +34,13 @@ table '2 fact Replynish Installation units'
 		queryGroup: 'Collected Data- Weekly'
 		source =
 				let
-				    Source = Excel.Workbook(File.Contents("C:\Users\Ahmad Sidaoui\Desktop\WeatherfordGit\My website\EcoTrack\D6 Inc randomized data.xlsx"), null, true),
+				    Source = Excel.Workbook(File.Contents("C:\Users\Ahmad Sidaoui\Desktop\DataVisualizationPortfolio\EcoTrack\D6 Inc randomized data.xlsx"), null, true),
 				    #"units installed_Sheet" = Source{[Item="units installed",Kind="Sheet"]}[Data],
 				    #"Promoted Headers" = Table.PromoteHeaders(#"units installed_Sheet", [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Entity", type text}, {"Time", type date}, {"installed units", Int64.Type}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Entity", type text}, {"Time", type date}, {"installed units", Int64.Type}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each [Time] >= #date(2024, 10, 1) and [Time] <= #date(2024, 10, 31))
 				in
-				    #"Changed Type"
+				    #"Filtered Rows"
 
 	annotation PBI_NavigationStepName = Navigation
 

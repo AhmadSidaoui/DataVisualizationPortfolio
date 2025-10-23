@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
+  "name": "7f3c362379db284db9d2",
+  "position": {
+    "x": 458.33333333333337,
+    "y": 1053.3602937384489,
+    "z": 9000,
+    "height": 456.66666666666669,
+    "width": 475.72815533980582,
+    "tabOrder": 5000
+  },
+  "visualGroup": {
+    "displayName": "Card - Clear Plastic Containers",
+    "groupMode": "ScaleMode"
+  }
+}

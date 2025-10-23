@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "ReportSectionefbe2df375c004034123",
+  "displayName": "Financials",
+  "displayOption": "FitToWidth",
+  "height": 1480,
+  "width": 1920
+}

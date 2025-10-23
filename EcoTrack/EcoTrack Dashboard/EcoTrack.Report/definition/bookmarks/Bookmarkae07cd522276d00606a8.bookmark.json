@@ -1,0 +1,1440 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/1.4.0/schema.json",
+  "displayName": "Reset - Financials",
+  "name": "Bookmarkae07cd522276d00606a8",
+  "options": {
+    "applyOnlyToTargetVisuals": true,
+    "targetVisualNames": [
+      "71c1fe77b24929c97060",
+      "360d664ce14d3d0e0675",
+      "c2332f5f0671c500e965",
+      "a6893dec1d5bd9bba7b8",
+      "bab09892b1aaaa173164",
+      "0f79cdba136902c9ab48",
+      "e55d70ad145d4b8e7d39",
+      "475860e6da6881122ebb",
+      "877618d1872cac20b059",
+      "6b2c503c0631515e0ba8",
+      "2534131607905320a3ae",
+      "a7b18f208326d5b553a5",
+      "4de61612d905de2354c0"
+    ]
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "ReportSectionefbe2df375c004034123",
+    "sections": {
+      "ReportSectionefbe2df375c004034123": {
+        "visualContainers": {
+          "1e1cf69fc596d2c68ac9": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "Filter78208d8b0d042ba5407b",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "l",
+                        "Entity": "LocalDateTable_9154311a-7303-4598-bba6-edcf3ea57553",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "Not": {
+                            "Expression": {
+                              "In": {
+                                "Expressions": [
+                                  {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Source": "l"
+                                        }
+                                      },
+                                      "Property": "Month"
+                                    }
+                                  }
+                                ],
+                                "Values": [
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "null"
+                                      }
+                                    }
+                                  ]
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1. Dim - Date"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  },
+                  "howCreated": 0,
+                  "cachedDisplayNames": [
+                    {
+                      "id": {
+                        "scopeId": {
+                          "Comparison": {
+                            "ComparisonKind": 0,
+                            "Left": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Entity": "LocalDateTable_9154311a-7303-4598-bba6-edcf3ea57553"
+                                  }
+                                },
+                                "Property": "Month"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "null"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "displayName": "(Blank)"
+                    }
+                  ]
+                },
+                {
+                  "name": "b71efb0b0ab0a78cd138",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "3.1 Costs LY (USD)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "ee8f060163d944b6e993",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "3.2 Costs CY (USD)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "9627d613845ab902259e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "3.3 YoY Variance (USD)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "775d2f1637d9e017bd0a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "3.4 YoY Variance (%)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "dcbbaf2e4a20a9e9b6c4",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "3.5 Average $/Day LY"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "40b2a430b8cd6a47598a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "3.6 Average $/Day CY"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "pivotTable",
+              "objects": {},
+              "activeProjections": {
+                "Columns": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1. Dim - Date"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "53e8a6949c0860d6be79": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "498b71f0b06dd5bd6e6a": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "51d0f36033b480351a00",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "1.1 Sales LY (USD)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "fb048f08ddaae2e72b03",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "1.2 Sales CY (USD)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e8963706b9862d57995e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "1.3 YoY Variance (USD)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "70dda603b7b002bc047b",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "1.4 YoY Variance (%)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "37d997a98bdda80c9b82",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "1.5 Average $/Day LY"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a981bd6ade8690c7aa7a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "1.6 Average $/Day CY"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "8d12a6520a56040417de",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Financial - Sales"
+                        }
+                      },
+                      "Property": "Date - Copy"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "pivotTable",
+              "objects": {},
+              "activeProjections": {
+                "Columns": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Financial - Sales"
+                        }
+                      },
+                      "Property": "Date - Copy"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "5b991630ee2010ac108a": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "e62aefcc3580e532b0c8": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "7e0df6af261ddbb1e3e8": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "02066786a003818dae21",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Financial - Sales"
+                        }
+                      },
+                      "Property": "Date - Copy"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7b51b71ce279c5c69ec5",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "2.1 Orders per Month LY"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "cc4d2fd044b312b9b237",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "2.2 Orders per Month CY"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "69b66e04960b76a48391",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "2.3 Average Orders/Day LY"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "25bd22501d3e9978c020",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "2.4 Average Orders/Day CY"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "cf41adae60d4329ce2be",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "2.5 Average $/Order LY"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "916695b53a8c0669203a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "2.6 Average $/Order CY"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "pivotTable",
+              "objects": {},
+              "activeProjections": {
+                "Columns": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Financial - Sales"
+                        }
+                      },
+                      "Property": "Date - Copy"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "9820f1e1475072ca0ac1": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "a13c980de1e572bba913": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "ea8e0af6a6a8deec0478": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "d9cf2d04282bb0411392",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Financial - Sales"
+                        }
+                      },
+                      "Property": "Date - Copy"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "f2e17875789a7945b383",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "2.1 Orders per Month LY"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "5bf1c3ac3554c8d0a947",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "2.2 Orders per Month CY"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "lineClusteredColumnComboChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Financial - Sales"
+                        }
+                      },
+                      "Property": "Date - Copy"
+                    }
+                  }
+                ]
+              },
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "4cfd7f8ee069ae00c144": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "b52c8902da78b332a17a",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "2 Financial Cost General Ledger RefTable"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "492c372d9ddd06b7e493",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "3.1 Costs LY (USD)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "d278b68618e8bb620a54",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "3.2 Costs CY (USD)"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "lineClusteredColumnComboChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "2 Financial Cost General Ledger RefTable"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "0d12e1e502c7ecd061c3": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "9bae8271ab35694a7ec7",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Financial - Sales"
+                        }
+                      },
+                      "Property": "Date - Copy"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "1b6f383db4ccb72930b1",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "1.1 Sales LY (USD)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "df205e0e04e9ebec4623",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "1.2 Sales CY (USD)"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "lineClusteredColumnComboChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Financial - Sales"
+                        }
+                      },
+                      "Property": "Date - Copy"
+                    }
+                  }
+                ]
+              },
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "f32f19b08730091a04c1": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "de1d510c02dc3bc26936",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "1.1 Sales LY (USD)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e64e27641d1c1ae1b09a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "1.2 Sales CY (USD)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "13db660b24aaee4bb7ae",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Financial - Sales"
+                        }
+                      },
+                      "Property": "Date - Copy"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "clusteredColumnChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Financial - Sales"
+                        }
+                      },
+                      "Property": "Date - Copy"
+                    }
+                  }
+                ]
+              },
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "78fd3cc59035b290b97b": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "cf2c101003018b4e61cc",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "3.2 Costs CY (USD)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "138ce3b325a06c4531c7",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "2 Financial Cost General Ledger RefTable"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "8509e100821a6199b804",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "3.1 Costs LY (USD)"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "lineStackedColumnComboChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "2 Financial Cost General Ledger RefTable"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "28887120691cb7b90b48": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "8ef080e0ba9898226d20",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "2.1 Orders per Month LY"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "cba7176d315e653a9e02",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "2.2 Orders per Month CY"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "bb1c1f601b0c00030bac",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Financial - Sales"
+                        }
+                      },
+                      "Property": "Date - Copy"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "clusteredColumnChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Financial - Sales"
+                        }
+                      },
+                      "Property": "Date - Copy"
+                    }
+                  }
+                ]
+              },
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "a8e76570085b11a3b3ce": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "c20f1093d73e41ba4a1d": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "493a31053d8d9c038165": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "ef3e9dbe0606dbd4a057": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "56c2f1730763d8ad9b11": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "6f222efe7c40ac90be27": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "4f4e61e735b226e7cae1": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "dbb8344a0865192d893e": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "6e9f6a8e9807187e0ea0": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "b1030d88db34d3b64c95",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "1.1 Sales LY (USD)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "45420cc5607667b91400",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "1.2 Sales CY (USD)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "abd22b8db685366d7c98",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Financial - Sales"
+                        }
+                      },
+                      "Property": "Date - Copy"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "pivotTable",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Financial - Sales"
+                        }
+                      },
+                      "Property": "Date - Copy"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Rows": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Financial - Sales"
+                        }
+                      },
+                      "Property": "Date - Copy"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "360d664ce14d3d0e0675": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "c2332f5f0671c500e965": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "bab09892b1aaaa173164": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "aaea7e1183100b4202ec",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "Cost/pound CY (USD) KPI"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Replynish - Actual Weight - Unpivoted"
+                            }
+                          },
+                          "Property": "Weight"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "0f79cdba136902c9ab48": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e391cd2e0247029e0b99",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "Cost/pound LY (USD) KPI"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_General_Measures"
+                        }
+                      },
+                      "Property": "Average Order Weight"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "e55d70ad145d4b8e7d39": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "28d52e80907208e16112",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "Sales/pound CY (USD) KPI"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "2 fact Replynish Orders"
+                            }
+                          },
+                          "Property": "orders count"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "475860e6da6881122ebb": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "345677609a48ab9e6e8d",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Sales_Measures"
+                        }
+                      },
+                      "Property": "Sales/pound LY (USD) KPI"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {}
+            }
+          },
+          "877618d1872cac20b059": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "2534131607905320a3ae": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "120953a840becd192e22",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "d",
+                        "Entity": "1 Dim Sortation Material Type",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "d"
+                                    }
+                                  },
+                                  "Property": "Weight Type"
+                                }
+                              }
+                            ],
+                            "Values": [
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'clean'"
+                                  }
+                                }
+                              ],
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'collected'"
+                                  }
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Sortation Material Type"
+                        }
+                      },
+                      "Property": "Weight Type"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "9e4cef381d5500030b8d",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "2 Financial Cost General Ledger RefTable"
+                        }
+                      },
+                      "Property": "Source Name"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "2 Financial Cost General Ledger RefTable"
+                        }
+                      },
+                      "Property": "Source Name"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "a7b18f208326d5b553a5": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "dbc0532c0d1dad4334e9": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "7fb3b456745c7306d85e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_General_Measures"
+                        }
+                      },
+                      "Property": "Version"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {}
+            }
+          }
+        },
+        "visualContainerGroups": {
+          "ba57d05590379e1180a9": {
+            "children": {
+              "b07d5c84d23951ce101b": {
+                "isHidden": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              },
+              "visible": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

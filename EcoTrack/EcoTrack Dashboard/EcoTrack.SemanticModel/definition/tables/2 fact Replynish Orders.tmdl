@@ -71,12 +71,13 @@ table '2 fact Replynish Orders'
 		queryGroup: 'Collected Data- Weekly'
 		source =
 				let
-				    Source = Excel.Workbook(File.Contents("C:\Users\Ahmad Sidaoui\Desktop\WeatherfordGit\My website\EcoTrack\D6 Inc randomized data.xlsx"), null, true),
+				    Source = Excel.Workbook(File.Contents("C:\Users\Ahmad Sidaoui\Desktop\DataVisualizationPortfolio\EcoTrack\D6 Inc randomized data.xlsx"), null, true),
 				    #"Replynish - Orders_Sheet" = Source{[Item="Replynish - Orders",Kind="Sheet"]}[Data],
 				    #"Promoted Headers" = Table.PromoteHeaders(#"Replynish - Orders_Sheet", [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Entity", type text}, {"Date", type date}, {"fulfilled on", type any}, {"Attribute.1", type text}, {"Attribute.2", type text}, {"Attribute.3", type any}, {"Value", Int64.Type}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Entity", type text}, {"Date", type date}, {"fulfilled on", type any}, {"Attribute.1", type text}, {"Attribute.2", type text}, {"Attribute.3", type any}, {"Value", Int64.Type}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each [Date] >= #date(2024, 10, 1) and [Date] <= #date(2024, 10, 31))
 				in
-				    #"Changed Type"
+				    #"Filtered Rows"
 
 	annotation PBI_NavigationStepName = Navigation
 

@@ -1,0 +1,1824 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/1.4.0/schema.json",
+  "displayName": "location",
+  "name": "Bookmarkb27d1c683ca54abd698e",
+  "options": {
+    "applyOnlyToTargetVisuals": true,
+    "targetVisualNames": [
+      "a9d78d4d7a807491092a",
+      "0e045bb4ab90163088b9",
+      "2f06e215d509cb5be0a4",
+      "24fba8b4000b8004070d",
+      "ab109ce76648d10b141c",
+      "f2a8a08a277091395ad2",
+      "51fee301591e83996dae",
+      "6924af3f1e00ed6362c8",
+      "987a231e73d901cb0aee"
+    ],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "ReportSectionbe4e1dcfa7449144f15e",
+    "sections": {
+      "ReportSectionbe4e1dcfa7449144f15e": {
+        "filters": {
+          "byExpr": [
+            {
+              "name": "Filtere676e271390803c6239c",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "2 fact Sortation Data Unpivoted"
+                    }
+                  },
+                  "Property": "Weight Material Type.1"
+                }
+              },
+              "howCreated": 1
+            }
+          ]
+        },
+        "visualContainers": {
+          "9608fb49e8c285dad423": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "Filter929ff86a3536a022e04d",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": " ",
+                        "Entity": "2 fact Sortation Data Unpivoted",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "Not": {
+                            "Expression": {
+                              "In": {
+                                "Expressions": [
+                                  {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Source": " "
+                                        }
+                                      },
+                                      "Property": "Weight Material Type.1"
+                                    }
+                                  }
+                                ],
+                                "Values": [
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "'collected'"
+                                      }
+                                    }
+                                  ],
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "'processed'"
+                                      }
+                                    }
+                                  ]
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "2 fact Sortation Data Unpivoted"
+                        }
+                      },
+                      "Property": "Weight Material Type.1"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "dc37b9c4d029966e2287",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1. Dim - Date"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "c36207adb1a21767863e",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1. Dim - Date"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "5daa4d096be916bb3d3b",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_CRU3_Measures"
+                        }
+                      },
+                      "Property": "Total Weight"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "4b44935b25c97506e14e",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Sortation Material Type"
+                        }
+                      },
+                      "Property": "Weight Type"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "ribbonChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Replynish - Actual Weight - Unpivoted"
+                        }
+                      },
+                      "Property": "WeekStartDate"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1. Dim - Date"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1. Dim - Date"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "cc69321de60867408de8": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "ffad35ddc259edab4d75": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "da6b3637632d78a2e3b0": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "Filter3cac5abeeb4538750aa1",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": " ",
+                        "Entity": "2 fact Sortation Data Unpivoted",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "Not": {
+                            "Expression": {
+                              "In": {
+                                "Expressions": [
+                                  {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Source": " "
+                                        }
+                                      },
+                                      "Property": "Weight Material Type.1"
+                                    }
+                                  }
+                                ],
+                                "Values": [
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "'collected'"
+                                      }
+                                    }
+                                  ],
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "'processed'"
+                                      }
+                                    }
+                                  ]
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "2 fact Sortation Data Unpivoted"
+                        }
+                      },
+                      "Property": "Weight Material Type.1"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "8ef0bb65268653454c48",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_CRU3_Measures"
+                        }
+                      },
+                      "Property": "Total Weight"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "0698cd819d083e204021",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Sortation Material Type"
+                        }
+                      },
+                      "Property": "Weight Type"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "pieChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_CRU3_Measures"
+                        }
+                      },
+                      "Property": "Total Weight"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Sortation Material Type"
+                        }
+                      },
+                      "Property": "Weight Type"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "2c921be7c6dabdfbeb48": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "Filter7ef6fd7f854d27bd06d0",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": " ",
+                        "Entity": "2 fact Sortation Data Unpivoted",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "Not": {
+                            "Expression": {
+                              "In": {
+                                "Expressions": [
+                                  {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Source": " "
+                                        }
+                                      },
+                                      "Property": "Weight Material Type.1"
+                                    }
+                                  }
+                                ],
+                                "Values": [
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "'collected'"
+                                      }
+                                    }
+                                  ],
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "'processed'"
+                                      }
+                                    }
+                                  ]
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "2 fact Sortation Data Unpivoted"
+                        }
+                      },
+                      "Property": "Weight Material Type.1"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "70a980fe303d9429e5c0",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Static"
+                        }
+                      },
+                      "Property": "account name"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "b49111c0a7828e19830e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_CRU3_Measures"
+                        }
+                      },
+                      "Property": "Total Weight"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "10abe0b34702911e88d3",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Sortation Material Type"
+                        }
+                      },
+                      "Property": "Weight Type"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "columnChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_CRU3_Measures"
+                        }
+                      },
+                      "Property": "Total Weight"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Static"
+                        }
+                      },
+                      "Property": "account name"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "d8465baaa4643e9b4562": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "832ad062760e020c38da",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_General_Measures"
+                        }
+                      },
+                      "Property": "Version"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {}
+            }
+          },
+          "36132fbc2a4bce5de02e": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e5f5dfa001b5ae84c002",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "3. Disconnected - Table 1"
+                        }
+                      },
+                      "Property": "Column1"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "advancedSlicerVisual",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": " ",
+                                "Entity": "3. Disconnected - Table 1",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "In": {
+                                    "Expressions": [
+                                      {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": " "
+                                            }
+                                          },
+                                          "Property": "Column1"
+                                        }
+                                      }
+                                    ],
+                                    "Values": [
+                                      [
+                                        {
+                                          "Literal": {
+                                            "Value": "'lbs'"
+                                          }
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "true"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "3de6f929f2aeb6e09077": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "ef0d52a8d9935ae8a940": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "46dad0a50e5ab37893c0",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1. Dim - Date"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "d1",
+                                "Entity": "1. Dim - Date",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "Comparison": {
+                                    "ComparisonKind": 2,
+                                    "Left": {
+                                      "Column": {
+                                        "Expression": {
+                                          "SourceRef": {
+                                            "Source": "d1"
+                                          }
+                                        },
+                                        "Property": "Date"
+                                      }
+                                    },
+                                    "Right": {
+                                      "Literal": {
+                                        "Value": "datetime'2022-01-01T00:00:00'"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "data": [
+                    {
+                      "properties": {
+                        "startDate": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "datetime'2022-01-01T00:00:00'"
+                            }
+                          }
+                        },
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Between'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1. Dim - Date"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1. Dim - Date"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "7738a3341a775342a1e8": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e701062dce295dc5805e",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Static"
+                        }
+                      },
+                      "Property": "city"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Static"
+                        }
+                      },
+                      "Property": "city"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "70b912672e866c95d31f": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "22153bb047c33c705800",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Sortation Material Type"
+                        }
+                      },
+                      "Property": "Material Type (Sortation)"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Sortation Material Type"
+                        }
+                      },
+                      "Property": "Material Type (Sortation)"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "575ccd7c0df819b91617": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "05314c5c316af0f22c62": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "3b970cda57bac4093d8c",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Static"
+                        }
+                      },
+                      "Property": "Alias"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Static"
+                        }
+                      },
+                      "Property": "Alias"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "807c3d148e7f70514848": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "62da2be011ec06e206e9",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Static"
+                        }
+                      },
+                      "Property": "fulfillment party"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Static"
+                        }
+                      },
+                      "Property": "fulfillment party"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "c1fe0cebca587cb595a3": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e1336032cbea9790a9cb",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Static"
+                        }
+                      },
+                      "Property": "account name"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Static"
+                        }
+                      },
+                      "Property": "account name"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "94cc172402410d569379": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "68075dab4959d903da11",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Static"
+                        }
+                      },
+                      "Property": "Region"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Static"
+                        }
+                      },
+                      "Property": "Region"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ab7dd9396019aeda720e": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "51fee301591e83996dae": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "Filterd00ddbccda3a0bb7a6a4",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": " ",
+                        "Entity": "2 fact Sortation Data Unpivoted",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "Not": {
+                            "Expression": {
+                              "In": {
+                                "Expressions": [
+                                  {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Source": " "
+                                        }
+                                      },
+                                      "Property": "Weight Material Type.1"
+                                    }
+                                  }
+                                ],
+                                "Values": [
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "'collected'"
+                                      }
+                                    }
+                                  ],
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "'processed'"
+                                      }
+                                    }
+                                  ]
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "2 fact Sortation Data Unpivoted"
+                        }
+                      },
+                      "Property": "Weight Material Type.1"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "abc7d04ea06bc709d859",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Sortation Material Type"
+                        }
+                      },
+                      "Property": "Material Type (Sortation)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "61a8efa8991de9a20c03",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_CRU3_Measures"
+                        }
+                      },
+                      "Property": "Total Weight"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "9a8e57568441923ae055",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Sortation Material Type"
+                        }
+                      },
+                      "Property": "Weight Type"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "barChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_CRU3_Measures"
+                        }
+                      },
+                      "Property": "Total Weight"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Sortation Material Type"
+                        }
+                      },
+                      "Property": "Material Type (Sortation)"
+                    }
+                  }
+                ]
+              },
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "6924af3f1e00ed6362c8": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "Filterd00ddbccda3a0bb7a6a4",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": " ",
+                        "Entity": "2 fact Sortation Data Unpivoted",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "Not": {
+                            "Expression": {
+                              "In": {
+                                "Expressions": [
+                                  {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Source": " "
+                                        }
+                                      },
+                                      "Property": "Weight Material Type.1"
+                                    }
+                                  }
+                                ],
+                                "Values": [
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "'collected'"
+                                      }
+                                    }
+                                  ],
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "'processed'"
+                                      }
+                                    }
+                                  ]
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "2 fact Sortation Data Unpivoted"
+                        }
+                      },
+                      "Property": "Weight Material Type.1"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "561b2f6805bbaa53dace",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Sortation Material Type"
+                        }
+                      },
+                      "Property": "Material Type (Sortation)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "eee25a44e313930837c9",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_CRU3_Measures"
+                        }
+                      },
+                      "Property": "Total Weight"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "63e83363a8410cab9278",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Sortation Material Type"
+                        }
+                      },
+                      "Property": "Weight Type"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "barChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_CRU3_Measures"
+                        }
+                      },
+                      "Property": "Total Weight"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Sortation Material Type"
+                        }
+                      },
+                      "Property": "Material Type (Sortation)"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "987a231e73d901cb0aee": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "fcf4d6dc8e2d1c41d225": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "98da408452b09294ed00",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Static"
+                        }
+                      },
+                      "Property": "city"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e8204f180a57a708629e",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Static"
+                        }
+                      },
+                      "Property": "Alias"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "9451735243e861800103",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_CRU3_Measures"
+                        }
+                      },
+                      "Property": "Contamination Weight"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7e52b6c9b70624de389e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_CRU3_Measures"
+                        }
+                      },
+                      "Property": "Clean Weight"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2fe996de396a84793ce1",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_CRU3_Measures"
+                        }
+                      },
+                      "Property": "Waste Weight"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "3cea3bc773e011800831",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_CRU3_Measures"
+                        }
+                      },
+                      "Property": "% Purity"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "46e96c1ae3a4dccbbddd",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_CRU3_Measures"
+                        }
+                      },
+                      "Property": "% Recyclable"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "dabb0b1bb19d671d9b86",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_CRU3_Measures"
+                        }
+                      },
+                      "Property": "% Waste"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "72ba18584ce50990125b",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Static"
+                        }
+                      },
+                      "Property": "Region"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7409d150a6818017a25c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_CRU3_Measures"
+                        }
+                      },
+                      "Property": "Processed Weight"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "pivotTable",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_CRU3_Measures"
+                        }
+                      },
+                      "Property": "Processed Weight"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Rows": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Static"
+                        }
+                      },
+                      "Property": "Region"
+                    }
+                  }
+                ]
+              },
+              "expansionStates": [
+                {
+                  "roles": [
+                    "Rows"
+                  ],
+                  "levels": [
+                    {
+                      "queryRefs": [
+                        "1. Dim - Static.Region"
+                      ],
+                      "isCollapsed": true,
+                      "identityKeys": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "1. Dim - Static"
+                              }
+                            },
+                            "Property": "Region"
+                          }
+                        }
+                      ],
+                      "isPinned": true
+                    },
+                    {
+                      "queryRefs": [
+                        "Dim - CRU3 - Static.city"
+                      ],
+                      "isCollapsed": true,
+                      "identityKeys": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "1. Dim - Static"
+                              }
+                            },
+                            "Property": "city"
+                          }
+                        }
+                      ],
+                      "isPinned": true
+                    },
+                    {
+                      "queryRefs": [
+                        "Dim - CRU3 - Static.Alias"
+                      ],
+                      "isCollapsed": true,
+                      "isPinned": true
+                    }
+                  ],
+                  "root": {
+                    "identityValues": null
+                  }
+                }
+              ]
+            }
+          },
+          "efb3d44506b2bda0e80c": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "08b77fc97308e6c49eed": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "7a90e0059ad7ca8e26b5": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "7e442cb0a8204a36dc2a": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "30a9d5e8123431079a80": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "5beb43cc0283de504256": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "6fc5ff2775bba0534b0e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Static"
+                        }
+                      },
+                      "Property": "lat"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e295dd6aada8be0a814c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Static"
+                        }
+                      },
+                      "Property": "lon"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "3965013392bed143c849",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "1 Dim Static"
+                        }
+                      },
+                      "Property": "account name"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2dfdb5692d0359c10634",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "1 Dim Static"
+                            }
+                          },
+                          "Property": "Alias"
+                        }
+                      },
+                      "Function": 3
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "map",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "2f06e215d509cb5be0a4": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "24fba8b4000b8004070d": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "ab109ce76648d10b141c": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "f2a8a08a277091395ad2": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          }
+        },
+        "visualContainerGroups": {
+          "f0f901fc9ef194991237": {
+            "isHidden": false
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              },
+              "visible": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -126,7 +126,7 @@ table '1 Dim Static'
 		queryGroup: 'Dim Tables'
 		source =
 				let
-				    Source = Excel.Workbook(File.Contents("C:\Users\Ahmad Sidaoui\Desktop\WeatherfordGit\My website\EcoTrack\D6 Inc randomized data.xlsx"), null, true),
+				    Source = Excel.Workbook(File.Contents("C:\Users\Ahmad Sidaoui\Desktop\DataVisualizationPortfolio\EcoTrack\D6 Inc randomized data.xlsx"), null, true),
 				    #"Dim - Static_Sheet" = Source{[Item="Dim - Static",Kind="Sheet"]}[Data],
 				    #"Promoted Headers" = Table.PromoteHeaders(#"Dim - Static_Sheet", [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Entity", type text}, {"lat", type number}, {"lon", type number}, {"state", type text}, {"location address", type text}, {"fulfillment party", type text}, {"account name", type text}, {"Alias", type text}, {"Region", type text}, {"Weeks in Service", Int64.Type}, {"Pick-up Frequency", type number}, {"Population", Int64.Type}, {"city", type text}, {"Region Name", type text}})

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
+  "name": "a9d78d4d7a807491092a",
+  "position": {
+    "x": 971.42857142857144,
+    "y": 525.71428571428578,
+    "z": 2000,
+    "height": 518.57142857142844,
+    "width": 940,
+    "tabOrder": 4000
+  },
+  "visualGroup": {
+    "displayName": "Charts by mat. stream",
+    "groupMode": "ScaleMode"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
+  "items": [
+    {
+      "name": "Bookmarkc0402b9fbed70c36ce6d",
+      "displayName": "sortation tab - map table view",
+      "children": [
+        "Bookmark1170b55d108536765caa",
+        "Bookmarkf689df07e3430ec726d3"
+      ]
+    },
+    {
+      "name": "Bookmark80a7453cab78bd397ac3",
+      "displayName": "Sortation tab - bar chart",
+      "children": [
+        "Bookmarkb27d1c683ca54abd698e",
+        "Bookmarkfe1a81f20444da02b5b8"
+      ]
+    },
+    {
+      "name": "Bookmarkfd4c5f2102a0138609ba",
+      "displayName": "Collection Tab",
+      "children": [
+        "Bookmark737412f77ee2da06b82c",
+        "Bookmark62c347935c6069e04b7a"
+      ]
+    },
+    {
+      "name": "Bookmark137eccd8aa6b0b110ca4",
+      "displayName": "financials",
+      "children": [
+        "Bookmarkf445ed939463be65d256",
+        "Bookmarkd05def97acd70c37da03",
+        "Bookmarkcf9eee94e9504a440829",
+        "Bookmarkae07cd522276d00606a8"
+      ]
+    }
+  ]
+}

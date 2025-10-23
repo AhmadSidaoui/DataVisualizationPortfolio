@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
+  "name": "2d55e74063696113325a",
+  "position": {
+    "x": 10,
+    "y": 582,
+    "z": 4000,
+    "height": 888,
+    "width": 324,
+    "tabOrder": 2000
+  },
+  "visualGroup": {
+    "displayName": "Material Collected By Location Weekly",
+    "groupMode": "ScaleMode"
+  }
+}

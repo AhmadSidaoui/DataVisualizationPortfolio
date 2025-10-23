@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
+  "name": "31c11202be3de6c41d72",
+  "position": {
+    "x": 951,
+    "y": 1053.3602937384487,
+    "z": 8000,
+    "height": 456.66666666666669,
+    "width": 476.39482200647257,
+    "tabOrder": 7000
+  },
+  "visualGroup": {
+    "displayName": "Card - Rigid Plastic Food Packaging",
+    "groupMode": "ScaleMode"
+  }
+}

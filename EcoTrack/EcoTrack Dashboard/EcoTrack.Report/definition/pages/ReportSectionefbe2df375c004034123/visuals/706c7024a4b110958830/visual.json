@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
+  "name": "706c7024a4b110958830",
+  "position": {
+    "x": 346.88022263223053,
+    "y": 582.90181741292349,
+    "z": 1000,
+    "height": 888.65706519700291,
+    "width": 1564.5370866144417,
+    "tabOrder": 5000
+  },
+  "visualGroup": {
+    "displayName": "Monthly Sales & Cost",
+    "groupMode": "ScaleMode"
+  }
+}

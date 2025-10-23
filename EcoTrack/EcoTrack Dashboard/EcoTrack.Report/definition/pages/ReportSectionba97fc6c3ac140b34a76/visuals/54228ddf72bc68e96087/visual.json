@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
+  "name": "54228ddf72bc68e96087",
+  "position": {
+    "x": 458.33333333333337,
+    "y": 586.66666666666674,
+    "z": 12000,
+    "height": 456.66666666666669,
+    "width": 475.72815533980582,
+    "tabOrder": 4000
+  },
+  "visualGroup": {
+    "displayName": "Card - Plastic Bags & Film",
+    "groupMode": "ScaleMode"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
+  "name": "7c8ef2141503a5611373",
+  "position": {
+    "x": 10.656799259944496,
+    "y": 214.51450116853121,
+    "z": 0,
+    "height": 304,
+    "width": 802.8122109158187,
+    "tabOrder": 2000
+  },
+  "visualGroup": {
+    "displayName": "Pie chart",
+    "groupMode": "ScaleMode"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
+  "name": "3e4892c5419adc3442a9",
+  "position": {
+    "x": 1393.1208876274031,
+    "y": 55.444219861714345,
+    "z": 3000,
+    "height": 358.4638541263493,
+    "width": 496.96125231152973,
+    "tabOrder": 4000
+  },
+  "visualGroup": {
+    "displayName": "Bar chart",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "ba57d05590379e1180a9"
+}

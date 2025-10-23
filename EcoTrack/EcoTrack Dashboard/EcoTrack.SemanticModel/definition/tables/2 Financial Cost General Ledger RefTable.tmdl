@@ -107,7 +107,7 @@ table '2 Financial Cost General Ledger RefTable'
 		queryGroup: 'Financial Data'
 		source =
 				let
-				    Source = Excel.Workbook(File.Contents("C:\Users\Ahmad Sidaoui\Desktop\WeatherfordGit\My website\EcoTrack\D6 Inc randomized data.xlsx"), null, true),
+				    Source = Excel.Workbook(File.Contents("C:\Users\Ahmad Sidaoui\Desktop\DataVisualizationPortfolio\EcoTrack\D6 Inc randomized data.xlsx"), null, true),
 				    #"Financial - Cost_Sheet" = Source{[Item="Financial - Cost",Kind="Sheet"]}[Data],
 				    #"Promoted Headers" = Table.PromoteHeaders(#"Financial - Cost_Sheet", [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Entity", type text}, {"Time", type date}, {"Key Column", Int64.Type}, {"Document Type", Int64.Type}, {"Account Numer", type text}, {"Source Number", type text}, {"Source Name", type text}, {"Amount", type number}, {"Year", Int64.Type}, {"Date", type date}})

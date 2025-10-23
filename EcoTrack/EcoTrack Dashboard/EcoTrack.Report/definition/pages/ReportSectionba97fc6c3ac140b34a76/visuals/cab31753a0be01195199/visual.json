@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
+  "name": "cab31753a0be01195199",
+  "position": {
+    "x": 951,
+    "y": 586.66666666666674,
+    "z": 11000,
+    "height": 456.66666666666669,
+    "width": 476.39482200647257,
+    "tabOrder": 6000
+  },
+  "visualGroup": {
+    "displayName": "Card - Plastic Bottles",
+    "groupMode": "ScaleMode"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
+  "name": "3ec7133c995d37e9a592",
+  "position": {
+    "x": 43.394634062802155,
+    "y": 24.537876275107919,
+    "z": 2000,
+    "height": 160.80553622501111,
+    "width": 346,
+    "tabOrder": 2000
+  },
+  "visualGroup": {
+    "displayName": "Install base",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "4704e222cc0e74b57077"
+}
